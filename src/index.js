@@ -28,6 +28,7 @@ function onSelect(event) {
   event.preventDefault();
   loader.classList.remove('visually-hidden');
   catInfo.classList.add('visually-hidden');
+  select.classList.add('visually-hidden');
 
   const breedId = event.currentTarget.value;
   fetchCatByBreed(breedId)
@@ -37,7 +38,7 @@ function onSelect(event) {
       catInfo.innerHTML = `
       <div class="cat-card">
         <div class="cat-img">
-          <img src="${url}" alt="cat" width="600" height="600"/>
+          <img src="${url}" alt="cat" width="450" height="400"/>
         </div>
         <div class="cat-text">
         <h1 class="cat-title">${data[0].breeds[0].name}</h1>
@@ -45,7 +46,7 @@ function onSelect(event) {
         <p class="cat-about">${data[0].breeds[0].description}</p>
         </div>
       </div>`;
-
+      select.classList.remove('visually-hidden');
       catInfo.classList.remove('visually-hidden');
       loader.classList.add('visually-hidden');
     })
