@@ -26,12 +26,19 @@
   font-size: 20px;
 }
 
+.breed-select {
+  padding: 20px 0 20px;
+  width: 300px;
+  font-size: 25px;
+  text-align: center;
+}
+
 .loader {
   transform: rotateZ(45deg);
   perspective: 1000px;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 200px;
+  height: 200px;
   color: #0ee4ae;
 }
 .loader:before,
