@@ -8,7 +8,7 @@ const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
-select.classList.add('visually-hidden');
+// select.classList.add('visually-hidden');
 select.style.display = 'none';
 loader.classList.remove('visually-hidden');
 error.classList.add('visually-hidden');
@@ -16,7 +16,7 @@ catInfo.classList.add('visually-hidden');
 
 function createOption(arrBreedId) {
   loader.classList.add('visually-hidden');
-  select.classList.remove('visually-hidden');
+  // select.classList.remove('visually-hidden');
   select.style.display = 'block';
   return arrBreedId
     .map(breed => `<option value="${breed.id}">${breed.name}</option>`)
@@ -61,6 +61,7 @@ function onSelect(event) {
 }
 
 function onError() {
+  select.style.display = 'block';
   Notiflix.Notify.failure(
     'Oops! Something went wrong! Try reloading the page!',
     {
@@ -71,5 +72,4 @@ function onError() {
   error.classList.add('visually-hidden');
   loader.classList.add('visually-hidden');
   catInfo.classList.add('visually-hidden');
-  select.classList.add('visually-hidden');
 }
