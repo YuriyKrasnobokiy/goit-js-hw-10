@@ -37,7 +37,7 @@ function onSelect(event) {
       catInfo.innerHTML = `
       <div class="cat-card">
         <div class="cat-img">
-          <img src="${url}" alt="cat" width="600" height="auto"/>
+          <img src="${url}" alt="cat" width="600" height="600"/>
         </div>
         <div class="cat-text">
         <h1 class="cat-title">${data[0].breeds[0].name}</h1>
