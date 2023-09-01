@@ -26,12 +26,12 @@
   font-size: 20px;
 }
 
-.breed-select {
+/* .breed-select {
   padding: 20px 0 20px;
   width: 300px;
   font-size: 25px;
   text-align: center;
-}
+} */
 
 .loader {
   transform: rotateZ(45deg);

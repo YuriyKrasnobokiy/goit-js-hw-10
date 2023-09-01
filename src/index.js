@@ -1,12 +1,18 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import Notiflix from 'notiflix';
-// import SlimSelect from 'slim-select';
-// import 'slim-select/dist/slimselect.css';
+
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
+
+select.style.width = '600px';
+select.style.padding = '20px 0 20px';
+select.style.width = '300px';
+select.style.fontSize = '25px';
 
 // select.classList.add('visually-hidden');
 select.style.display = 'none';
@@ -17,14 +23,19 @@ catInfo.classList.add('visually-hidden');
 function createOption(arrBreedId) {
   loader.classList.add('visually-hidden');
   // select.classList.remove('visually-hidden');
-  select.style.display = 'block';
+  select.style.display = 'flex';
   return arrBreedId
     .map(breed => `<option value="${breed.id}">${breed.name}</option>`)
     .join();
 }
 
 fetchBreeds()
-  .then(data => (select.innerHTML = createOption(data)))
+  .then(data => {
+    select.innerHTML = createOption(data);
+    new SlimSelect({
+      select: select,
+    });
+  })
   .catch(onError);
 
 select.addEventListener('change', onSelect);
@@ -38,7 +49,7 @@ function onSelect(event) {
   const breedId = event.currentTarget.value;
   fetchCatByBreed(breedId)
     .then(data => {
-      const { url, breeds } = data[0];
+      const { url } = data[0];
 
       catInfo.innerHTML = `
       <div class="cat-card">
@@ -61,7 +72,7 @@ function onSelect(event) {
 }
 
 function onError() {
-  select.style.display = 'block';
+  select.style.display = 'flex';
   Notiflix.Notify.failure(
     'Oops! Something went wrong! Try reloading the page!',
     {
